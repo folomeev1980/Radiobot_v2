@@ -21,15 +21,15 @@ def link(bot, update):
             #mp3_link = config.youtube_link(update.message.text)
             mp3_link=(update.message.text)
             yt = YouTube(mp3_link)
-            update.message.reply_text("Ну что")
-           # update.message.reply_text(yt.title)
+            #update.message.reply_text("Ну что")
+            update.message.reply_text(yt.title)
             #print(yt.streams.filter(only_audio=True).all()[2])
 
             a = str((yt.streams.filter(only_audio=True).all()[2]))
             if a == "<Stream: itag=\"249\" mime_type=\"audio/webm\" abr=\"50kbps\" acodec=\"opus\">":
 
                 filename = "input.webm"
-
+                update.message.reply_text("Ну что")
                 #print(yt.title)
 
 
