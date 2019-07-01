@@ -1,0 +1,7 @@
+pyTelegramBotAPI
+requests
+telebot
+cloudconvert
+Flask
+python-telegram-bot
+pytube

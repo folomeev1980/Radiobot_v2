@@ -43,6 +43,7 @@ dispatcher = updater.dispatcher
 
 
 link_handler = MessageHandler(Filters.text, link)
+
 dispatcher.add_handler(link_handler)
 
 
