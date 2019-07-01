@@ -45,7 +45,7 @@ def link(bot, update):
                 #
                 # update.message.reply_text(config.tutle(mp3_link))
                 # update.message.reply_text(str(config.youtube_bitrate_min(mp3_link)) + ' kbps')
-                # config.youtube_download_min(mp3_link)
+                #config.youtube_download_min(mp3_link)
 
                 # update.message.reply_text(update.message.text)
 
@@ -54,23 +54,23 @@ def link(bot, update):
 
                 #filename = config.youtube_filename_min(update.message.text)
                 #filename="input.webm"
-                #update.message.reply_text(filename)
-                #update.message.reply_text(config.tutle(update.message.text))
-                #update.message.reply_text(str(config.youtube_bitrate_min(update.message.text)) + ' kbps')
-                #update.message.reply_text("Начало скачивания")
-                #config.youtube_download_test(update.message.text)
+                update.message.reply_text(filename)
+                update.message.reply_text(config.tutle(update.message.text))
+                update.message.reply_text(str(config.youtube_bitrate_min(update.message.text)) + ' kbps')
+                update.message.reply_text("Начало скачивания")
+                config.youtube_download_test(update.message.text)
 
 
 
 
 
-                #
-                # update.message.reply_text("Конец скачивания: " + config.file_size(filename))
-                # config.convert_low32(filename)
-                # update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
-                # bot.send_chat_action(update.message.chat.id, 'upload_audio')
-                # audio = open('output.mp3', 'rb')
-                # bot.send_audio(update.message.chat.id, audio)
+
+                update.message.reply_text("Конец скачивания: " + config.file_size(filename))
+                config.convert_low32(filename)
+                update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
+                bot.send_chat_action(update.message.chat.id, 'upload_audio')
+                audio = open('output.mp3', 'rb')
+                bot.send_audio(update.message.chat.id, audio)
 
                 # Отправка аудио в канал Телеграмм
             else:
