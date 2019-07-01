@@ -26,6 +26,7 @@ def link(bot, update):
             #print(yt.streams.filter(only_audio=True).all()[2])
 
             a = str((yt.streams.filter(only_audio=True).all()[2]))
+            update.message.reply_text(a)
             if a == "<Stream: itag=\"249\" mime_type=\"audio/webm\" abr=\"50kbps\" acodec=\"opus\">":
 
                 filename = "input.webm"
