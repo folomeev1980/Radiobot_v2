@@ -29,36 +29,11 @@ def link(bot, update):
             if a == "<Stream: itag=\"249\" mime_type=\"audio/webm\" abr=\"50kbps\" acodec=\"opus\">":
 
                 filename = "input.webm"
-                #update.message.reply_text("Ну что")
-                #print(yt.title)
 
 
 
-
-                # #
-                # update.message.reply_text("check")
-                # #filename = config.youtube_filename_min(mp3_link)
-
-                # update.message.reply_text(filename)
-                #
-                #
-                #
-                # update.message.reply_text(config.tutle(mp3_link))
-                # update.message.reply_text(str(config.youtube_bitrate_min(mp3_link)) + ' kbps')
-                #config.youtube_download_min(mp3_link)
-
-                # update.message.reply_text(update.message.text)
-
-                # Редакция
-
-
-                #filename = config.youtube_filename_min(update.message.text)
-                #filename="input.webm"
-                update.message.reply_text(filename)
-                #update.message.reply_text(config.tutle(update.message.text))
-                #update.message.reply_text(str(config.youtube_bitrate_min(update.message.text)) + ' kbps')
                 update.message.reply_text("Начало скачивания")
-                config.youtube_download_test(update.message.text)
+                config.youtube_download_min(mp3_link)
 
 
 
