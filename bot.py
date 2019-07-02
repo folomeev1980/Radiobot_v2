@@ -43,7 +43,7 @@ def link(bot, update):
 
 
             else:
-               update.message.reply_text("Необхлдимый битрейт отсутствует")
+               update.message.reply_text("Необходимый битрейт 50 kbps- отсутствует")
 
         except Exception as ex:
             update.message.reply_text(str(ex))
