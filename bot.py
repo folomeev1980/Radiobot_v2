@@ -15,18 +15,13 @@ def link(bot, update):
     if len(re.findall(r'(https?://[^\s]+)', update.message.text)) > 0:
         try:
             config.remove_files()
-            #update.message.text
-
-            #mp3_link="https://www.youtube.com/watch?v=kMntFsrFFu8"
             mp3_link = config.youtube_link(update.message.text)
-            # mp3_link=(update.message.text)
             yt = YouTube(mp3_link)
-            #update.message.reply_text("Ну что")
-            #update.message.reply_text(yt.title)
-            #print(yt.streams.filter(only_audio=True).all()[2])
+            update.message.reply_text(yt.title)
+
 
             a = str((yt.streams.filter(only_audio=True).all()[2]))
-            update.message.reply_text(a)
+            #update.message.reply_text(a)
             if a == "<Stream: itag=\"249\" mime_type=\"audio/webm\" abr=\"50kbps\" acodec=\"opus\">":
 
                 filename = "input.webm"
@@ -45,7 +40,7 @@ def link(bot, update):
                 audio = open('output.mp3', 'rb')
                 bot.send_audio(update.message.chat.id, audio)
 
-                # Отправка аудио в канал Телеграмм
+
             else:
                update.message.reply_text("Необхлдимый битрейт отсутствует")
 
