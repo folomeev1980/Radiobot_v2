@@ -18,11 +18,11 @@ def link(bot, update):
             #update.message.text
 
             #mp3_link="https://www.youtube.com/watch?v=kMntFsrFFu8"
-            #mp3_link = config.youtube_link(update.message.text)
-            mp3_link=(update.message.text)
+            mp3_link = config.youtube_link(update.message.text)
+            # mp3_link=(update.message.text)
             yt = YouTube(mp3_link)
             #update.message.reply_text("Ну что")
-            update.message.reply_text(yt.title)
+            #update.message.reply_text(yt.title)
             #print(yt.streams.filter(only_audio=True).all()[2])
 
             a = str((yt.streams.filter(only_audio=True).all()[2]))
@@ -30,9 +30,6 @@ def link(bot, update):
             if a == "<Stream: itag=\"249\" mime_type=\"audio/webm\" abr=\"50kbps\" acodec=\"opus\">":
 
                 filename = "input.webm"
-
-
-
                 update.message.reply_text("Начало скачивания")
                 config.youtube_download_min(mp3_link)
 
