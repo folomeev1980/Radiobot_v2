@@ -17,7 +17,7 @@ def link(bot, update):
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
             yt = YouTube(mp3_link)
-            update.message.reply_text(yt.title)
+
 
 
             a = str((yt.streams.filter(only_audio=True).all()[2]))
@@ -25,7 +25,8 @@ def link(bot, update):
             if a == "<Stream: itag=\"249\" mime_type=\"audio/webm\" abr=\"50kbps\" acodec=\"opus\">":
 
                 filename = "input.webm"
-                update.message.reply_text("Начало скачивания")
+                update.message.reply_text(yt.title,"Начало скачивания")
+
                 config.youtube_download_min(mp3_link)
 
 
