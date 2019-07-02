@@ -25,7 +25,7 @@ def link(bot, update):
             if a == "<Stream: itag=\"249\" mime_type=\"audio/webm\" abr=\"50kbps\" acodec=\"opus\">":
 
                 filename = "input.webm"
-                update.message.reply_text(yt.title+"Начало скачивания")
+                update.message.reply_text(yt.title+"....Начало скачивания")
 
                 config.youtube_download_min(mp3_link)
 
