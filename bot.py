@@ -18,19 +18,18 @@ def link(bot, update):
             mp3_link = config.youtube_link(update.message.text)
             yt = YouTube(mp3_link)
 
+            range_kbps = []
+            lst_ = (yt.streams.filter(only_audio=True).all())
+            for i in lst_:
+                kbps = re.search(r"abr=\"(.*?)kbps\"", str(i))
+                range_kbps.append(int(kbps.group(1)))
 
 
-            a = str((yt.streams.filter(only_audio=True).all()[2]))
-            #update.message.reply_text(a)
-            if a == "<Stream: itag=\"249\" mime_type=\"audio/webm\" abr=\"50kbps\" acodec=\"opus\">":
+            if min(range_kbps)== 50:
 
                 filename = "input.webm"
                 update.message.reply_text(yt.title+"\n....Начало скачивания....")
-
                 config.youtube_download_min(mp3_link)
-
-
-
 
 
 
@@ -43,7 +42,7 @@ def link(bot, update):
 
 
             else:
-               update.message.reply_text("Необходимый битрейт 50 kbps- отсутствует")
+               update.message.reply_text("Минимальный битрейт: "+str(min(range_kbps))+"kbps")
 
         except Exception as ex:
             update.message.reply_text(str(ex))
