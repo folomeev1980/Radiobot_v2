@@ -28,7 +28,9 @@ def link(bot, update):
             if min(range_kbps)== 50:
 
                 filename = "input.webm"
-                update.message.reply_text(yt.title+"\n....Начало скачивания....")
+                #update.message.reply_text(yt.title+"\n....Начало скачивания....")
+
+                update.message.reply_text("\n....Начало скачивания....")
                 config.youtube_download_min(mp3_link)
 
 
@@ -43,6 +45,7 @@ def link(bot, update):
 
             else:
                update.message.reply_text("Минимальный битрейт: "+str(min(range_kbps))+"kbps")
+               index_=range_kbps.index(min(range_kbps))
 
         except Exception as ex:
             update.message.reply_text(str(ex))

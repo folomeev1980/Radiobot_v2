@@ -9,11 +9,18 @@ from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
 url="https://www.youtube.com/watch?v=TamKnGkU5j0"
 
-a=[]
-yt = YouTube(url)
-lst_=(yt.streams.filter(only_audio=True).all())
-for i in lst_:
-    kbps = re.search(r"abr=\"(.*?)kbps\"", str(i))
-    a.append(int(kbps.group(1)))
-print(type(min(a)))
+# a=[]
+# yt = YouTube(url)
+# lst_=(yt.streams.filter(only_audio=True).all())
+# for i in lst_:
+#     kbps = re.search(r"abr=\"(.*?)kbps\"", str(i))
+#     a.append(int(kbps.group(1)))
+# #print(type(min(a)))
+#
+# print(a.index(50))
+
+yt = YouTube("https://www.youtube.com/watch?v=l0uQ6rwY5lE")
+#print(yt.titile)
+#print(dir(yt))
+print(yt.title)
 
