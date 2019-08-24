@@ -28,6 +28,7 @@ def link(bot, update):
             if min(range_kbps)== 50:
 
                 filename = "input.webm"
+## Problem with the title
                 #update.message.reply_text(yt.title+"\n....Начало скачивания....")
 
                 update.message.reply_text("\n....Начало скачивания....")
