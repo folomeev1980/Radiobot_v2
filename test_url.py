@@ -7,7 +7,7 @@ from flask import Flask
 # from pytube import YouTube
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
-url="https://www.youtube.com/watch?v=TamKnGkU5j0"
+#url="https://www.youtube.com/watch?v=TamKnGkU5j0"
 
 # a=[]
 # yt = YouTube(url)
@@ -19,8 +19,8 @@ url="https://www.youtube.com/watch?v=TamKnGkU5j0"
 #
 # print(a.index(50))
 
-yt = YouTube("https://www.youtube.com/watch?v=l0uQ6rwY5lE")
+yt = YouTube("https://www.youtube.com/watch?v=6DVYAsL8lxU")
 #print(yt.titile)
 #print(dir(yt))
-print(yt.title)
+print((yt.streams.filter(only_audio=True).all()))
 
