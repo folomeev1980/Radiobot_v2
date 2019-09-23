@@ -64,7 +64,7 @@ def convert_low32(filename):
         "outputformat": "mp3",
         "input": "upload",
         "converteroptions": {
-            "audio_bitrate": 30,
+            "audio_bitrate": 32,
             "audio_frequency": "44100",
             "audio_codec": "MP3",
             "audio_qscale": -1,
