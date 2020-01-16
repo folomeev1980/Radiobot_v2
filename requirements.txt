@@ -4,4 +4,4 @@ requests
 telebot
 cloudconvert
 python-telegram-bot
-pytube==9.5.3
+pytube==9.5.1
