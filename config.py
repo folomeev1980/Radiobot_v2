@@ -3,7 +3,7 @@ import re
 import base64
 import time
 import cloudconvert
-from pytubeCopy.__main__ import YouTube
+from pytube.__main__ import YouTube
 
 
 
