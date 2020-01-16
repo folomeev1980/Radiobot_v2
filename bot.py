@@ -1,6 +1,6 @@
 import os
 import config
-from pytube import YouTube
+from pytubeCopy.__main__ import YouTube
 import re
 import telegram
 from flask import Flask
