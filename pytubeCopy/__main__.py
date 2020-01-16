@@ -82,9 +82,11 @@ class YouTube(object):
         }
 
         if proxies:
+            print("local pytube")
             install_proxy(proxies)
 
         if not defer_prefetch_init:
+            print("local pytube")
             self.prefetch_init()
 
     def prefetch_init(self):

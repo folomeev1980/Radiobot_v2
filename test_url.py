@@ -20,7 +20,7 @@ from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 # print(a.index(50))
 
 yt = YouTube("https://www.youtube.com/watch?v=6DVYAsL8lxU")
-#print(yt.titile)
+print(yt.title)
 #print(dir(yt))
-print((yt.streams.filter(only_audio=True).all()))
+#print((yt.streams.filter(only_audio=True).all()))
 
