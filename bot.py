@@ -21,8 +21,11 @@ def link(bot, update):
             range_kbps = []
             lst_ = (yt.streams.filter(only_audio=True).all())
             for i in lst_:
-                kbps = re.search(r"abr=\"(.*?)kbps\"", str(i))
-                range_kbps.append(int(kbps.group(1)))
+                try:
+                    kbps = re.search(r"abr=\"(.*?)kbps\"", str(i))
+                    range_kbps.append(int(kbps.group(1)))
+                except:
+                    range_kbps.append(int(1000))
 
 
             if min(range_kbps)== 50:
