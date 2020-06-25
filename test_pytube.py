@@ -1,20 +1,14 @@
 import pytube
-from config import  youtube_link
+from config import youtube_link
 import re
 
+url = "https://www.youtube.com/watch?v=Vnpef-uWB6s"
+url_old = "https://www.youtube.com/watch?v=4vc2kQx5eTc"
 
+range_kbps = []
 
-
-url="https://www.youtube.com/watch?v=Vnpef-uWB6s"
-url_old="https://www.youtube.com/watch?v=4vc2kQx5eTc"
-
-range_kbps=[]
-
-
-
-
-url=(youtube_link(url))
-yt=pytube.YouTube(url)
+url = (youtube_link(url))
+yt = pytube.YouTube(url)
 
 lst_ = (yt.streams.filter(only_audio=True).all())
 print(lst_)
@@ -23,7 +17,7 @@ for index, i in enumerate(lst_):
         kbps = re.search(r"abr=\"(.*?)kbps\"", str(i))
 
         range_kbps.append(int(kbps.group(1)))
-        print(index,kbps.group(1))
+        print(index, kbps.group(1))
     except:
         range_kbps.append(1000)
 
