@@ -55,6 +55,9 @@ elif PY3:
 
     if PY33:
         from html.parser import HTMLParser
+        from urllib import request
+        from urllib.parse import quote, urlencode, parse_qsl, unquote
+        from urllib.request import urlopen
 
         def unescape(s):
             """Strip HTML entries from a string."""

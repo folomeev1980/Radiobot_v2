@@ -1,4 +1,4 @@
-import pytube
+from pytube.__main__ import YouTube
 from config import youtube_link
 import re
 
@@ -8,7 +8,7 @@ url_old = "https://www.youtube.com/watch?v=4vc2kQx5eTc"
 range_kbps = []
 
 url = (youtube_link(url))
-yt = pytube.YouTube(url)
+yt = YouTube(url)
 
 lst_ = (yt.streams.filter(only_audio=True).all())
 print(lst_)
