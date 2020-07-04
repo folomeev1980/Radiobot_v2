@@ -20,7 +20,7 @@ def link(bot, update):
             yt = YouTube(mp3_link)
             try:
                 rating=yt.rating
-                titl = yt.title + str(rating)
+                titl = yt.title +"  "+str(rating)[0]
             except:
                 titl=""
             #update.message.reply_text(titl)
