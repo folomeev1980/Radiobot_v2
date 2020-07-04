@@ -17,6 +17,7 @@ def link(bot, update):
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
             yt = YouTube(mp3_link)
+            titl=yt.title
 
             range_kbps = []
             lst_ = (yt.streams.filter(only_audio=True).all())
@@ -44,7 +45,7 @@ def link(bot, update):
                 update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
                 bot.send_chat_action(update.message.chat.id, 'upload_audio')
                 audio = open('output.mp3', 'rb')
-                bot.send_audio(update.message.chat.id, audio)
+                bot.send_audio(update.message.chat.id, audio, title=titl)
 
 
             else:
