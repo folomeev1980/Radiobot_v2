@@ -7,9 +7,9 @@ from flask import Flask
 # from pytube import YouTube
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
-
-TOKEN = os.environ.get("TOKEN",'574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
+TOKEN = os.environ.get("TOKEN", '574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
 PORT = int(os.environ.get('PORT', '5000'))
+
 
 def link(bot, update):
     if len(re.findall(r'(https?://[^\s]+)', update.message.text)) > 0:
@@ -17,7 +17,8 @@ def link(bot, update):
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
             yt = YouTube(mp3_link)
-            titl=yt.title
+            titl = yt.title
+            update.message.reply_text(titl)
 
             range_kbps = []
             lst_ = (yt.streams.filter(only_audio=True).all())
@@ -28,17 +29,14 @@ def link(bot, update):
                 except:
                     range_kbps.append(int(1000))
 
-
-            if min(range_kbps)== 50:
+            if min(range_kbps) == 50:
 
                 filename = "input.webm"
-## Problem with the title
-                #update.message.reply_text(yt.title+"\n....Начало скачивания....")
+                ## Problem with the title
+                # update.message.reply_text(yt.title+"\n....Начало скачивания....")
 
                 update.message.reply_text("\n....Начало скачивания....")
                 config.youtube_download_min(mp3_link)
-
-
 
                 update.message.reply_text("Конец скачивания: " + config.file_size(filename))
                 config.convert_low32(filename)
@@ -49,8 +47,8 @@ def link(bot, update):
 
 
             else:
-               update.message.reply_text("Минимальный битрейт: "+str(min(range_kbps))+"kbps")
-               index_=range_kbps.index(min(range_kbps))
+                update.message.reply_text("Минимальный битрейт: " + str(min(range_kbps)) + "kbps")
+                index_ = range_kbps.index(min(range_kbps))
 
         except Exception as ex:
             update.message.reply_text(str(ex))
@@ -89,7 +87,6 @@ dispatcher.add_handler(update_handler)
 
 link_handler = MessageHandler(Filters.text, link)
 dispatcher.add_handler(link_handler)
-
 
 ##----------------Webhook-----------------------------
 
