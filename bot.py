@@ -23,7 +23,7 @@ def link(bot, update):
                 titl = yt.title + str(rating)
             except:
                 titl=""
-            update.message.reply_text(titl)
+            #update.message.reply_text(titl)
 
             range_kbps = []
             lst_ = (yt.streams.filter(only_audio=True).all())
