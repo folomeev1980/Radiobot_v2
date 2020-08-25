@@ -26,7 +26,7 @@ def convert(filename):
     # except FileNotFoundError:
     #        pass
 
-    api = cloudconvert.api('yW5eTpoFJKgINxd7wpdeBdlsl1T5OyWlQ9xMrGyVkRJbxRwHWKpJYNQuz36P7KPY')
+    api = cloudconvert.Api('yW5eTpoFJKgINxd7wpdeBdlsl1T5OyWlQ9xMrGyVkRJbxRwHWKpJYNQuz36P7KPY')
 
     process = api.convert({
         "inputformat": "webm",
@@ -55,7 +55,7 @@ def convert_low32(filename):
         pass
 
     time.sleep(15)
-    api = cloudconvert.api('yW5eTpoFJKgINxd7wpdeBdlsl1T5OyWlQ9xMrGyVkRJbxRwHWKpJYNQuz36P7KPY')
+    api = cloudconvert.Api('yW5eTpoFJKgINxd7wpdeBdlsl1T5OyWlQ9xMrGyVkRJbxRwHWKpJYNQuz36P7KPY')
     process = api.convert({
         "inputformat": "webm",
         "outputformat": "mp3",
