@@ -20,13 +20,13 @@ def link(bot, update):
             yt = YouTube(mp3_link)
             try:
 
-                titl = yt.title
+                titl = str(yt.title)
                 if len(titl) > 29:
                     titl = titl[0:30]
 
 
             except:
-                titl = ""
+                titl = titl
             # update.message.reply_text(titl)
 
             range_kbps = []
