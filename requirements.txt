@@ -2,6 +2,6 @@ pyTelegramBotAPI
 Flask
 requests
 telebot
-cloudconvert
+cloudconvert==1.0.0
 python-telegram-bot
 
