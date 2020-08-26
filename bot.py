@@ -18,16 +18,16 @@ def link(bot, update):
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
             yt = YouTube(mp3_link)
-            # try:
-            #
-            #     titl = str(yt.title)
-            #     if len(titl) > 29:
-            #         titl = titl[0:30]
-            #
-            #
-            # except:
-            #     titl = titl
-            # # update.message.reply_text(titl)
+            try:
+
+                titl = str(yt.title)
+                if len(titl) > 29:
+                    titl = titl[0:30]
+
+
+            except:
+                titl = titl
+            # update.message.reply_text(titl)
 
             range_kbps = []
             lst_ = (yt.streams.filter(only_audio=True).all())
