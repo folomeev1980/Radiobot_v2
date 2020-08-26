@@ -146,12 +146,12 @@ def youtube_download_min(mp3_link):
     yt = YouTube(mp3_link)
     fl = True
 
-    while fl:
-        try:
-            f = yt.streams.filter(only_audio=True).all()
-            fl = True
-        except:
-            fl = True
+    # while fl:
+    #     try:
+    f = yt.streams.filter(only_audio=True).all()
+        #     fl = True
+        # except:
+        #     fl = True
 
     start = int((re.search('abr=.(.*)kbps', str(f[0])).group(1)))
     for i in range(0, len(f), 1):
