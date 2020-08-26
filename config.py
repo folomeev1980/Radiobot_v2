@@ -125,6 +125,7 @@ def youtube_link(message_text):
 
 def youtube_download_test(mp3_link):
     yt = YouTube(mp3_link)
+
     f = yt.streams.filter(only_audio=True).all()
     flag = False
     a = "50kbps"
@@ -143,8 +144,15 @@ def youtube_download_test(mp3_link):
 
 def youtube_download_min(mp3_link):
     yt = YouTube(mp3_link)
+    fl = True
 
-    f = yt.streams.filter(only_audio=True).all()
+    while fl:
+        try:
+            f = yt.streams.filter(only_audio=True).all()
+            fl = True
+        except:
+            fl = True
+
     start = int((re.search('abr=.(.*)kbps', str(f[0])).group(1)))
     for i in range(0, len(f), 1):
         a = str(f[i])

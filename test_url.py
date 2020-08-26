@@ -11,7 +11,7 @@ from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
 url="https://www.youtube.com/watch?v=TamKnGkU5j0"
 
-cloudconvert.Api()
+
 # a=[]
 # yt = YouTube(url)
 # lst_=(yt.streams.filter(only_audio=True).all())
@@ -23,8 +23,11 @@ cloudconvert.Api()
 # print(a.index(50))
 
 yt = YouTube(url,)
-print(str(yt.rating)+yt.title)
-print(yt.title)
+
+#print(yt.title)
 #print(dir(yt))
-#print((yt.streams.filter(only_audio=True).all()))
+try:
+    print(type((yt.streams.filter(only_audio=True).all())))
+except Exception:  # includes simplejson.decoder.JSONDecodeError
+    print('Decoding JSON has failed')
 
