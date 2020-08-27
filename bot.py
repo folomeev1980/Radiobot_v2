@@ -37,9 +37,9 @@ def link(bot, update):
             update.message.reply_text("\n....Начало скачивания....")
             try:
                 yt.streams.get_by_itag('249').download(filename='input')
-            except:
-                update.message.reply_text("\n....Ошибка закачки....")
-                pass
+            except Exception as e:
+                update.message.reply_text(str(e))
+
 
             # update.message.reply_text(titl)
 
