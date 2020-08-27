@@ -18,7 +18,7 @@ def link(bot, update):
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
             yt = YouTube(mp3_link)
-            update.message.reply_text("\n...шаг 1....")
+
             try:
 
                 titl = str(yt.title)
