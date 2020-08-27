@@ -30,7 +30,11 @@ def link(bot, update):
                 update.message.reply_text("\n....Ошибка title....")
                 titl = titl
 
+            filename = "input.webm"
+            ## Problem with the title
+            # update.message.reply_text(yt.title+"\n....Начало скачивания....")
 
+            update.message.reply_text("\n....Начало скачивания....")
             try:
                 yt.streams.get_by_itag('249').download(filename='input')
             except:
@@ -50,12 +54,7 @@ def link(bot, update):
 
             # if min(range_kbps) == 50:
 
-            filename = "input.webm"
-            ## Problem with the title
-            # update.message.reply_text(yt.title+"\n....Начало скачивания....")
-
-            update.message.reply_text("\n....Начало скачивания....")
-            config.youtube_download_min(mp3_link)
+            # config.youtube_download_min(mp3_link)
 
             update.message.reply_text("Конец скачивания: " + config.file_size(filename))
             config.convert_low32(filename)
@@ -63,7 +62,6 @@ def link(bot, update):
             bot.send_chat_action(update.message.chat.id, 'upload_audio')
             audio = open('output.mp3', 'rb')
             bot.send_audio(update.message.chat.id, audio, title=titl)
-
 
             # else:
             #     update.message.reply_text("Минимальный битрейт: " + str(min(range_kbps)) + "kbps")
