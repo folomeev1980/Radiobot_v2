@@ -18,17 +18,20 @@ def link(bot, update):
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
             yt = YouTube(mp3_link)
+            print(yt)
 
             try:
 
                 titl = str(yt.title)
                 if len(titl) > 29:
                     titl = titl[0:30]
+                print(titl)
 
 
             except:
                 update.message.reply_text("\n....Ошибка title....")
                 titl = titl
+                print(titl)
 
             filename = "input.webm"
             ## Problem with the title
