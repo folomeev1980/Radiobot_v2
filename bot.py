@@ -1,6 +1,7 @@
 import os
 import config
 from pytube.__main__ import YouTube
+from pytube3.__main__ import YouTube as YouTube3
 import re
 import telegram
 from flask import Flask
@@ -17,31 +18,50 @@ def link(bot, update):
         try:
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
-            yt = YouTube(mp3_link)
-            print(yt)
 
+
+            # try:
+            #
+            #     titl = str(yt.title)
+            #     if len(titl) > 29:
+            #         titl = titl[0:30]
+            #     print(titl)
+            #
+            #
+            # except:
+            #     update.message.reply_text("\n....Ошибка title....")
+            #     titl = titl
+            #     print(titl)
+            #
+            # filename = "input.webm"
+            #
+            #
+            # update.message.reply_text("\n....Начало скачивания....")
+            # try:
+            #     yt.streams.get_by_itag('249').download(filename='input')
+            # except Exception as e:
+            #     update.message.reply_text(str(e))
             try:
-
-                titl = str(yt.title)
-                if len(titl) > 29:
-                    titl = titl[0:30]
-                print(titl)
-
-
-            except:
-                update.message.reply_text("\n....Ошибка title....")
-                titl = titl
-                print(titl)
-
-            filename = "input.webm"
-            ## Problem with the title
-            # update.message.reply_text(yt.title+"\n....Начало скачивания....")
-
-            update.message.reply_text("\n....Начало скачивания....")
-            try:
-                yt.streams.get_by_itag('249').download(filename='input')
+                yt = YouTube3(mp3_link)
+                print(yt)
+                filename = "input.webm"
+                titl=str(yt.title)[0:31]
+                audio = yt.streams.filter(only_audio=True, file_extension="webm")[0]
+                update.message.reply_text("\n....Начало скачивания....")
+                audio.download(filename='input')
             except Exception as e:
-                update.message.reply_text(str(e))
+                titl=""
+                print(str(e))
+
+
+
+
+
+
+
+
+
+
 
 
             # update.message.reply_text(titl)
