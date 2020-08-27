@@ -21,13 +21,13 @@ url="https://www.youtube.com/watch?v=TamKnGkU5j0"
 # #print(type(min(a)))
 #
 # print(a.index(50))
-
+# yt.streams.get_by_itag('22')
 yt = YouTube(url,)
-
+print(yt.streams.get_by_itag('249'))
 #print(yt.title)
 #print(dir(yt))
-try:
-    print(type((yt.streams.filter(only_audio=True).all())))
-except Exception:  # includes simplejson.decoder.JSONDecodeError
-    print('Decoding JSON has failed')
+# try:
+#     print(((yt.streams.filter(only_audio=True,).all())))
+# except Exception:  # includes simplejson.decoder.JSONDecodeError
+#     print('Decoding JSON has failed')
 

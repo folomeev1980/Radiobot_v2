@@ -26,38 +26,47 @@ def link(bot, update):
 
 
             except:
+                update.message.reply_text("\n....Ошибка title....")
                 titl = titl
+
+
+            try:
+                yt.streams.get_by_itag('249').download(filename='input')
+            except:
+                update.message.reply_text("\n....Ошибка закачки....")
+                pass
+
             # update.message.reply_text(titl)
 
-            range_kbps = []
-            lst_ = (yt.streams.filter(only_audio=True).all())
-            for i in lst_:
-                try:
-                    kbps = re.search(r"abr=\"(.*?)kbps\"", str(i))
-                    range_kbps.append(int(kbps.group(1)))
-                except:
-                    range_kbps.append(int(1000))
+            # range_kbps = []
+            # lst_ = (yt.streams.filter(only_audio=True).all())
+            # for i in lst_:
+            #     try:
+            #         kbps = re.search(r"abr=\"(.*?)kbps\"", str(i))
+            #         range_kbps.append(int(kbps.group(1)))
+            #     except:
+            #         range_kbps.append(int(1000))
 
-            if min(range_kbps) == 50:
+            # if min(range_kbps) == 50:
 
-                filename = "input.webm"
-                ## Problem with the title
-                # update.message.reply_text(yt.title+"\n....Начало скачивания....")
+            filename = "input.webm"
+            ## Problem with the title
+            # update.message.reply_text(yt.title+"\n....Начало скачивания....")
 
-                update.message.reply_text("\n....Начало скачивания....")
-                config.youtube_download_min(mp3_link)
+            update.message.reply_text("\n....Начало скачивания....")
+            config.youtube_download_min(mp3_link)
 
-                update.message.reply_text("Конец скачивания: " + config.file_size(filename))
-                config.convert_low32(filename)
-                update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
-                bot.send_chat_action(update.message.chat.id, 'upload_audio')
-                audio = open('output.mp3', 'rb')
-                bot.send_audio(update.message.chat.id, audio, title=titl)
+            update.message.reply_text("Конец скачивания: " + config.file_size(filename))
+            config.convert_low32(filename)
+            update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
+            bot.send_chat_action(update.message.chat.id, 'upload_audio')
+            audio = open('output.mp3', 'rb')
+            bot.send_audio(update.message.chat.id, audio, title=titl)
 
 
-            else:
-                update.message.reply_text("Минимальный битрейт: " + str(min(range_kbps)) + "kbps")
-                index_ = range_kbps.index(min(range_kbps))
+            # else:
+            #     update.message.reply_text("Минимальный битрейт: " + str(min(range_kbps)) + "kbps")
+            #     index_ = range_kbps.index(min(range_kbps))
 
         except Exception as ex:
             update.message.reply_text(str(ex))

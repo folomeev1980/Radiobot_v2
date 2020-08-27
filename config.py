@@ -170,6 +170,31 @@ def youtube_download_min(mp3_link):
         #     return filename
 
 
+def downloader(object):
+    # yt = YouTube(mp3_link)
+    # fl = True
+    #
+    # # while fl:
+    # #     try:
+    # f = yt.streams.filter(only_audio=True).all()
+        #     fl = True
+        # except:
+        #     fl = True
+
+    # start = int((re.search('abr=.(.*)kbps', str(f[0])).group(1)))
+    # for i in range(0, len(f), 1):
+    #     a = str(f[i])
+    #     b = int((re.search('abr=.(.*)kbps', a).group(1)))
+    #     if b < start:
+    #         start = b
+    object.download(filename='input')
+    # rash = str((re.search('audio/(.*).', str(f[i])).group(1)))
+    # filename = "input." + rash
+    #return filename
+
+
+
+
 def youtube_filename_min(mp3_link):
     yt = YouTube(mp3_link)
 
