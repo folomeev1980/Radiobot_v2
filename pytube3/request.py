@@ -1,4 +1,3 @@
-
 """Implements a simple wrapper around urlopen."""
 import logging
 import browser_cookie3
@@ -13,7 +12,8 @@ from urllib.request import build_opener
 
 logger = logging.getLogger(__name__)
 
-@@ -15,12 +19,27 @@ def _execute_request(
+
+def _execute_request(
     url: str, method: Optional[str] = None, headers: Optional[Dict[str, str]] = None
 ) -> HTTPResponse:
     base_headers = {"User-Agent": "Mozilla/5.0"}
@@ -42,7 +42,7 @@ logger = logging.getLogger(__name__)
     return urlopen(request)  # nosec
 
 
-@@ -45,6 +64,7 @@ def stream(
+def stream(
     :param int range_size: The size in bytes of each range request. Defaults to 9MB
     :rtype: Iterable[bytes]
     """
