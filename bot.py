@@ -15,38 +15,36 @@ PORT = int(os.environ.get('PORT', '5000'))
 def link(bot, update):
     try:
         if len(re.findall(r'(https?://[^\s]+)', update.message.text)) > 0:
-    
+
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
-    
-            try:
-                yt = YouTube3(mp3_link)
-                print(yt)
-                filename = "input.webm"
-                titl = str(yt.title)[0:31]
-                audio = yt.streams.filter(only_audio=True, file_extension="webm")[0]
-                update.message.reply_text("\n....Начало скачивания....")
-                audio.download(filename='input')
-            except Exception as e:
-                titl = ""
-                print(str(e))
-    
+
+            
+            yt = YouTube3(mp3_link)
+            print(yt)
+            filename = "input.webm"
+            titl = str(yt.title)[0:31]
+            audio = yt.streams.filter(only_audio=True, file_extension="webm")[0]
+            update.message.reply_text("\n....Начало скачивания....")
+            audio.download(filename='input')
+           
+
             update.message.reply_text("Конец скачивания: " + config.file_size(filename))
             config.convert_low32(filename)
             update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
             bot.send_chat_action(update.message.chat.id, 'upload_audio')
             audio = open('output.mp3', 'rb')
             bot.send_audio(update.message.chat.id, audio, title=titl)
-    
-    
-    
-    
-    
+
+
+
+
+
         else:
             update.message.reply_text(config.help)
 
     except Exception as ex:
-        update.message.reply_text("Error {}".format(str(ex)))
+        update.message.reply_text("Error <<<{}>>>>".format(str(ex)))
 
 def update(bot, update):
     update.message.reply_text(str(update.message))
