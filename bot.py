@@ -13,90 +13,40 @@ PORT = int(os.environ.get('PORT', '5000'))
 
 
 def link(bot, update):
-    titl = "master"
-    if len(re.findall(r'(https?://[^\s]+)', update.message.text)) > 0:
-        try:
+    try:
+        if len(re.findall(r'(https?://[^\s]+)', update.message.text)) > 0:
+    
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
-
-
-            # try:
-            #
-            #     titl = str(yt.title)
-            #     if len(titl) > 29:
-            #         titl = titl[0:30]
-            #     print(titl)
-            #
-            #
-            # except:
-            #     update.message.reply_text("\n....Ошибка title....")
-            #     titl = titl
-            #     print(titl)
-            #
-            # filename = "input.webm"
-            #
-            #
-            # update.message.reply_text("\n....Начало скачивания....")
-            # try:
-            #     yt.streams.get_by_itag('249').download(filename='input')
-            # except Exception as e:
-            #     update.message.reply_text(str(e))
+    
             try:
                 yt = YouTube3(mp3_link)
                 print(yt)
                 filename = "input.webm"
-                titl=str(yt.title)[0:31]
+                titl = str(yt.title)[0:31]
                 audio = yt.streams.filter(only_audio=True, file_extension="webm")[0]
                 update.message.reply_text("\n....Начало скачивания....")
                 audio.download(filename='input')
             except Exception as e:
-                titl=""
+                titl = ""
                 print(str(e))
-
-
-
-
-
-
-
-
-
-
-
-
-            # update.message.reply_text(titl)
-
-            # range_kbps = []
-            # lst_ = (yt.streams.filter(only_audio=True).all())
-            # for i in lst_:
-            #     try:
-            #         kbps = re.search(r"abr=\"(.*?)kbps\"", str(i))
-            #         range_kbps.append(int(kbps.group(1)))
-            #     except:
-            #         range_kbps.append(int(1000))
-
-            # if min(range_kbps) == 50:
-
-            # config.youtube_download_min(mp3_link)
-
+    
             update.message.reply_text("Конец скачивания: " + config.file_size(filename))
             config.convert_low32(filename)
             update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
             bot.send_chat_action(update.message.chat.id, 'upload_audio')
             audio = open('output.mp3', 'rb')
             bot.send_audio(update.message.chat.id, audio, title=titl)
+    
+    
+    
+    
+    
+        else:
+            update.message.reply_text(config.help)
 
-            # else:
-            #     update.message.reply_text("Минимальный битрейт: " + str(min(range_kbps)) + "kbps")
-            #     index_ = range_kbps.index(min(range_kbps))
-
-        except Exception as ex:
-            update.message.reply_text(str(ex))
-
-
-    else:
-        update.message.reply_text(config.help)
-
+    except Exception as ex:
+        update.message.reply_text("Error {}".format(str(ex)))
 
 def update(bot, update):
     update.message.reply_text(str(update.message))
