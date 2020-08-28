@@ -59,7 +59,7 @@ def log(bot, update):
         update.message.reply_text(str(myfile.read()))
 
 
-updater = Updater(TOKEN)
+updater = Updater(TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
 #    Commands
