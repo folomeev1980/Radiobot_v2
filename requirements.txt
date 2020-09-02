@@ -3,7 +3,7 @@ Flask==1.0
 requests
 telebot
 cloudconvert==1.1.0
-python-telegram-bot==9.0.0
+python-telegram-bot==11.1.0
 typing-extensions
 browser_cookie3
 
