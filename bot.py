@@ -1,5 +1,6 @@
 import os
 import config
+import logging
 from pytube.__main__ import YouTube
 from pytube3.__main__ import YouTube as YouTube3
 import re
@@ -10,15 +11,15 @@ from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
 TOKEN = os.environ.get("TOKEN", '574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
 PORT = int(os.environ.get('PORT', '5000'))
+logger = logging.getLogger(__name__)
 
 
-def link(bot, update,context):
+def link(bot, update, context):
     try:
         if len(re.findall(r'(https?://[^\s]+)', update.message.text)) > 0:
 
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
-
 
             yt = YouTube3(mp3_link)
             print(yt)
@@ -27,7 +28,6 @@ def link(bot, update,context):
             audio = yt.streams.filter(only_audio=True, file_extension="webm")[0]
             update.message.reply_text("\n....Начало скачивания....")
             audio.download(filename='input')
-
 
             update.message.reply_text("Конец скачивания: " + config.file_size(filename))
             config.convert_low32(filename)
@@ -46,6 +46,7 @@ def link(bot, update,context):
     except Exception as ex:
         update.message.reply_text("Error <<<{}>>>>".format(str(ex)))
 
+
 def update(context, update):
     update.message.reply_text(str(update.message))
 
@@ -59,9 +60,13 @@ def log(context, update):
         update.message.reply_text(str(myfile.read()))
 
 
-def main():
+def error(update, context):
+    """Log Errors caused by Updates."""
+    logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-    updater = Updater(TOKEN,use_context=True)
+
+def main():
+    updater = Updater(TOKEN, use_context=True)
     dispatcher = updater.dispatcher
 
     #    Commands
@@ -74,9 +79,10 @@ def main():
 
     #    Messages
 
-
     link_handler = MessageHandler(Filters.text, link)
     dispatcher.add_handler(link_handler)
+
+    dispatcher.add_error_handler(error)
 
     ##----------------Webhook-----------------------------
 
@@ -87,6 +93,7 @@ def main():
     updater.idle()
 
     ##---------------------Webhook_end---------------------
+
 
 if __name__ == '__main__':
     main()
