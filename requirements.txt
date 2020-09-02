@@ -1,4 +1,4 @@
-pyTelegramBotAPI
+pyTelegramBotAPI==3.6.5
 Flask==1.0
 requests
 telebot
