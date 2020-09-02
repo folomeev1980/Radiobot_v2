@@ -12,14 +12,14 @@ TOKEN = os.environ.get("TOKEN", '574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
 PORT = int(os.environ.get('PORT', '5000'))
 
 
-def link(bot, update):
+def link(bot, update,context):
     try:
         if len(re.findall(r'(https?://[^\s]+)', update.message.text)) > 0:
 
             config.remove_files()
             mp3_link = config.youtube_link(update.message.text)
 
-            
+
             yt = YouTube3(mp3_link)
             print(yt)
             filename = "input.webm"
@@ -27,7 +27,7 @@ def link(bot, update):
             audio = yt.streams.filter(only_audio=True, file_extension="webm")[0]
             update.message.reply_text("\n....Начало скачивания....")
             audio.download(filename='input')
-           
+
 
             update.message.reply_text("Конец скачивания: " + config.file_size(filename))
             config.convert_low32(filename)
@@ -46,22 +46,22 @@ def link(bot, update):
     except Exception as ex:
         update.message.reply_text("Error <<<{}>>>>".format(str(ex)))
 
-def update(bot, update):
+def update(context, update):
     update.message.reply_text(str(update.message))
 
 
-def echo(bot, update):
+def echo(context, update):
     update.message.reply_text(config.help)
 
 
-def log(bot, update):
+def log(context, update):
     with open('mylog.log', 'r') as myfile:
         update.message.reply_text(str(myfile.read()))
 
 
 def main():
 
-    updater = Updater(TOKEN)
+    updater = Updater(TOKEN,use_context=True)
     dispatcher = updater.dispatcher
 
     #    Commands
