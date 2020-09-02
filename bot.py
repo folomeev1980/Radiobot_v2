@@ -59,29 +59,34 @@ def log(bot, update):
         update.message.reply_text(str(myfile.read()))
 
 
-updater = Updater(TOKEN)
-dispatcher = updater.dispatcher
+def main():
 
-#    Commands
+    updater = Updater(TOKEN)
+    dispatcher = updater.dispatcher
 
-log_handler = CommandHandler('log', update)
-dispatcher.add_handler(log_handler)
+    #    Commands
 
-update_handler = CommandHandler('update', update)
-dispatcher.add_handler(update_handler)
+    log_handler = CommandHandler('log', update)
+    dispatcher.add_handler(log_handler)
 
-#    Messages
+    update_handler = CommandHandler('update', update)
+    dispatcher.add_handler(update_handler)
+
+    #    Messages
 
 
-link_handler = MessageHandler(Filters.text, link)
-dispatcher.add_handler(link_handler)
+    link_handler = MessageHandler(Filters.text, link)
+    dispatcher.add_handler(link_handler)
 
-##----------------Webhook-----------------------------
+    ##----------------Webhook-----------------------------
 
-updater.start_webhook(listen="0.0.0.0",
-                      port=PORT,
-                      url_path=TOKEN)
-updater.bot.setWebhook("https://radiobot3.herokuapp.com/" + TOKEN)
-updater.idle()
+    updater.start_webhook(listen="0.0.0.0",
+                          port=PORT,
+                          url_path=TOKEN)
+    updater.bot.setWebhook("https://radiobot3.herokuapp.com/" + TOKEN)
+    updater.idle()
 
-##---------------------Webhook_end---------------------
+    ##---------------------Webhook_end---------------------
+
+if __name__ == '__main__':
+    main()
