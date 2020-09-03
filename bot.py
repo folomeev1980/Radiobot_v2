@@ -60,9 +60,9 @@ def log(bot, update):
         update.message.reply_text(str(myfile.read()))
 
 
-def error(update, bot):
-    """Log Errors caused by Updates."""
-    logger.warning('Update "%s" caused error "%s"', update, context.error)
+# def error(update, bot):
+#     """Log Errors caused by Updates."""
+#     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 
 def main():
@@ -82,7 +82,7 @@ def main():
     link_handler = MessageHandler(Filters.text, link)
     dispatcher.add_handler(link_handler)
 
-    dispatcher.add_error_handler(error)
+  #  dispatcher.add_error_handler(error)
 
     ##----------------Webhook-----------------------------
 
