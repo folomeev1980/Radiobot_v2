@@ -47,7 +47,7 @@ def link(bot, update):
         update.message.reply_text("Error <<<{}>>>>".format(str(ex)))
 
 
-def update(context, update):
+def update(bot, update):
     update.message.reply_text(str(update.message))
 
 
@@ -55,12 +55,12 @@ def echo(context, update):
     update.message.reply_text(config.help)
 
 
-def log(context, update):
+def log(bot, update):
     with open('mylog.log', 'r') as myfile:
         update.message.reply_text(str(myfile.read()))
 
 
-def error(update, context):
+def error(update, bot):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
