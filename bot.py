@@ -14,7 +14,7 @@ PORT = int(os.environ.get('PORT', '5000'))
 logger = logging.getLogger(__name__)
 
 
-def link(bot, update, context):
+def link(bot, update):
     try:
         if len(re.findall(r'(https?://[^\s]+)', update.message.text)) > 0:
 
