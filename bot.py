@@ -26,10 +26,10 @@ def link(bot, update):
             filename = "input.webm"
             titl = str(yt.title)[0:31]
             audio = yt.streams.filter(only_audio=True, file_extension="webm")[0]
-            update.message.reply_text("\n....Начало скачивания....")
+            #update.message.reply_text("\n....Начало скачивания....")
             audio.download(filename='input')
 
-            update.message.reply_text("Конец скачивания: " + config.file_size(filename))
+            update.message.reply_text("Начало конвертации: " + config.file_size(filename))
 #             config.convert_low32(filename)
 #             update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
             bot.send_chat_action(update.message.chat.id, 'upload_audio')
