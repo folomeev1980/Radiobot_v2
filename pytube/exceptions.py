@@ -1,44 +1,25 @@
-# -*- coding: utf-8 -*-
-"""Library specific exception definitions."""
-import sys
+"""
+All exceptions used in CloudConvert Python wrapper derives from `APIError`
+"""
 
+class APIError(Exception):
+    """Base CloudConvert API exception, all specific exceptions inherits from it."""
 
-class PytubeError(Exception):
-    """Base pytube exception that all others inherent.
+class HTTPError(APIError):
+    """Raised when the request fails at a low level (DNS, network, ...)"""
 
-    This is done to not pollute the built-in exceptions, which *could* result
-    in unintended errors being unexpectedly and incorrectly handled within
-    implementers code.
-    """
+class BadRequest(APIError):
+    """Raised when a the CloudConvert API returns any HTTP error code 400"""
 
+class ConversionFailed(APIError):
+    """Raised when when a the CloudConvert API returns any HTTP error code 422"""
 
-class ExtractError(PytubeError):
-    """Data extraction based exception."""
+class TemporaryUnavailable(APIError):
+    """Raised when a the CloudConvert API returns any HTTP error code 503"""
 
-    def __init__(self, msg, video_id=None):
-        """Construct an instance of a :class:`ExtractError <ExtractError>`.
+class InvalidResponse(APIError):
+    """Raised when api response is not valid json"""
 
-        :param str msg:
-            User defined error message.
-        :param str video_id:
-            A YouTube video identifier.
-        """
-        if video_id is not None:
-            msg = "{video_id}: {msg}".format(video_id=video_id, msg=msg)
+class InvalidParameterException(APIError):
+    """Raised when request contains bad parameters."""
 
-        super(ExtractError, self).__init__(msg)
-
-        self.exc_info = sys.exc_info()
-        self.video_id = video_id
-
-
-class RegexMatchError(ExtractError):
-    """Regex pattern did not return any matches."""
-
-
-class LiveStreamError(ExtractError):
-    """Video is a live stream."""
-
-
-class VideoUnavailable(PytubeError):
-    """Video is unavailable."""
