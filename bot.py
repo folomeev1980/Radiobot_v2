@@ -1,7 +1,7 @@
 import os
 import config
 import logging
-from pytube.__main__ import YouTube
+#from pytube.__main__ import YouTube
 from pytube3.__main__ import YouTube as YouTube3
 import re
 import telegram
