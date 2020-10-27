@@ -3,7 +3,7 @@ import re
 import base64
 import time
 import pytube
-from pytube.__main__ import YouTube
+from pytube3.__main__ import YouTube
 
 data = str(base64.b64decode(b'NTc0OTkwNzI5OkFBSHZGVkRTTmctTFE1UlVTYVBkYmlRMnBPZERBN1hJNVhj'))
 TOKEN = data[2:len(data) - 1]
