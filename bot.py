@@ -33,7 +33,7 @@ def link(bot, update):
             config.convert_low32(filename)
             update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
             bot.send_chat_action(update.message.chat.id, 'upload_audio')
-            audio = open("input.webm", 'rb')
+            audio = open("output.mp3", 'rb')
             bot.send_audio(update.message.chat.id, audio, title=titl)
 
 
