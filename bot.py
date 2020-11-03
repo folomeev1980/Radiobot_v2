@@ -24,7 +24,7 @@ def link(bot, update):
             yt = YouTube3(mp3_link)
             print(yt)
             filename = "input.webm"
-            titl = str(yt.title)[0:27]
+            titl = str(yt.title)[0:35]
             audio = yt.streams.filter(only_audio=True, file_extension="webm")[0]
             #update.message.reply_text("\n....Начало скачивания....")
             audio.download(filename='input')
