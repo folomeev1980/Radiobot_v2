@@ -14,10 +14,10 @@ from urllib.parse import quote
 from urllib.parse import unquote
 from urllib.parse import urlencode
 
-from pytube.cipher import Cipher
-from pytube.exceptions import LiveStreamError
-from pytube.exceptions import RegexMatchError
-from pytube.helpers import regex_search
+from pytube3.cipher import Cipher
+from pytube3.exceptions import LiveStreamError
+from pytube3.exceptions import RegexMatchError
+from pytube3.helpers import regex_search
 
 logger = logging.getLogger(__name__)
 
