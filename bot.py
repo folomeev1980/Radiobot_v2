@@ -66,7 +66,7 @@ def log(bot, update):
 
 
 def main():
-    updater = Updater(TOKEN, use_context=True)
+    updater = Updater(TOKEN)
     dispatcher = updater.dispatcher
 
     #    Commands
