@@ -14,10 +14,10 @@ from urllib.parse import quote
 from urllib.parse import unquote
 from urllib.parse import urlencode
 
-from pytube3.cipher import Cipher
-from pytube3.exceptions import LiveStreamError
-from pytube3.exceptions import RegexMatchError
-from pytube3.helpers import regex_search
+from pytube.cipher import Cipher
+from pytube.exceptions import LiveStreamError
+from pytube.exceptions import RegexMatchError
+from pytube.helpers import regex_search
 
 logger = logging.getLogger(__name__)
 
@@ -71,7 +71,6 @@ def video_info_url(video_id: str, watch_url: str) -> str:
     params = OrderedDict(
         [
             ("video_id", video_id),
-            ("el", "$el"),
             ("ps", "default"),
             ("eurl", quote(watch_url)),
             ("hl", "en_US"),
@@ -160,6 +159,7 @@ def get_ytplayer_js(html: str) -> Any:
     """
     js_url_patterns = [
         r"\"jsUrl\":\"([^\"]*)\"",
+        r"\"js\":\"([^\"]*base\.js)\""
     ]
     for pattern in js_url_patterns:
         regex = re.compile(pattern)
@@ -278,14 +278,12 @@ def apply_descrambler(stream_data: Dict, key: str) -> None:
     if key == "url_encoded_fmt_stream_map" and not stream_data.get(
         "url_encoded_fmt_stream_map"
     ):
-        formats = json.loads(stream_data["player_response"])["streamingData"][
-            "formats"
-        ]
-        formats.extend(
-            json.loads(stream_data["player_response"])["streamingData"][
-                "adaptiveFormats"
-            ]
-        )
+        streaming_data = json.loads(stream_data["player_response"])["streamingData"]
+        formats = []
+        if 'formats' in streaming_data.keys():
+            formats.extend(streaming_data['formats'])
+        if 'adaptiveFormats' in streaming_data.keys():
+            formats.extend(streaming_data['adaptiveFormats'])
         try:
             stream_data[key] = [
                 {
