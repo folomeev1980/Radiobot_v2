@@ -9,7 +9,7 @@ from flask import Flask
 # from pytube import YouTube
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
-TOKEN = os.environ.get("TOKEN", '574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
+#TOKEN = os.environ.get("TOKEN", '574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
 PORT = int(os.environ.get('PORT', '5000'))
 logger = logging.getLogger(__name__)
 
@@ -66,7 +66,8 @@ def log(bot, update):
 
 
 def main():
-    updater = Updater(TOKEN)
+    #updater = Updater(TOKEN)
+    updater = Updater('574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc', use_context=True)
     dispatcher = updater.dispatcher
 
     #    Commands
