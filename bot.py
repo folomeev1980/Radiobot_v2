@@ -14,7 +14,7 @@ PORT = int(os.environ.get('PORT', '5000'))
 logger = logging.getLogger(__name__)
 
 
-def link(bot, update):
+def link(update, context):
     try:
         if len(re.findall(r'(https?://[^\s]+)', update.message.text)) > 0:
 
@@ -32,9 +32,9 @@ def link(bot, update):
             update.message.reply_text("Начало конвертации: " + config.file_size(filename))
             config.convert_low32(filename)
             update.message.reply_text("Конец конвертации: " + config.file_size('output.mp3'))
-            bot.send_chat_action(update.message.chat.id, 'upload_audio')
+            context.bot.send_chat_action(update.message.chat.id, 'upload_audio')
             audio = open("output.mp3", 'rb')
-            bot.send_audio(update.message.chat.id, audio, title=titl)
+            context.bot.send_audio(update.message.chat.id, audio, title=titl)
 
 
 
@@ -47,11 +47,11 @@ def link(bot, update):
         update.message.reply_text("Error <<<{}>>>>".format(str(ex)))
 
 
-def update(bot, update):
+def update(update, context):
     update.message.reply_text(str(update.message))
 
 
-def echo(context, update):
+def echo(update, context):
     update.message.reply_text(config.help)
 
 
