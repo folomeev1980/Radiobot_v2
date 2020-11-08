@@ -1,8 +1,7 @@
 pyTelegramBotAPI
-Flask==1.0
 requests
 telebot
-python-telegram-bot==12.8
+python-telegram-bot
 typing-extensions
 browser_cookie3
 
