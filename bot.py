@@ -7,6 +7,7 @@ import re
 #import telegram
 #from flask import Flask
 # from pytube import YouTube
+import time
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
 TOKEN = os.environ.get("TOKEN", '574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
@@ -51,6 +52,10 @@ def link(update, context):
 
 def update(update, context):
     update.message.reply_text(str(update.message))
+    
+def cicle(update, context):
+    while:
+      time.sleep(1000)
 
 
 
@@ -79,6 +84,9 @@ def main():
 
     link_handler = MessageHandler(Filters.text, link)
     dispatcher.add_handler(link_handler)
+    
+    cicle_handler = MessageHandler(Filters.text, cicle)
+    dispatcher.add_handler(cicle_handler)
 
   
 
