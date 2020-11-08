@@ -4,15 +4,17 @@ import logging
 #from pytube.__main__ import YouTube
 from pytube3.__main__ import YouTube as YouTube3
 import re
-import telegram
-from flask import Flask
+#import telegram
+#from flask import Flask
 # from pytube import YouTube
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
-#TOKEN = os.environ.get("TOKEN", '574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
+TOKEN = os.environ.get("TOKEN", '574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
 PORT = int(os.environ.get('PORT', '5000'))
-logger = logging.getLogger(__name__)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
 
+logger = logging.getLogger(__name__)
 
 def link(update, context):
     try:
@@ -51,30 +53,25 @@ def update(update, context):
     update.message.reply_text(str(update.message))
 
 
-def echo(update, context):
-    update.message.reply_text(config.help)
 
+def error(update, context):
+    """Log Errors caused by Updates."""
+    logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-def log(bot, update):
-    with open('mylog.log', 'r') as myfile:
-        update.message.reply_text(str(myfile.read()))
-
-
-# def error(update, bot):
-#     """Log Errors caused by Updates."""
-#     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 
 def main():
-    #updater = Updater(TOKEN)
-    updater = Updater('574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc', use_context=True)
+  
+    updater = Updater(TOKEN, use_context=True)
     dispatcher = updater.dispatcher
 
-    #    Commands
+   
 
-    log_handler = CommandHandler('log', update)
-    dispatcher.add_handler(log_handler)
-
+    dispatcher.add_error_handler(error)
+    
+     #    Commands
+    
+    
     update_handler = CommandHandler('update', update)
     dispatcher.add_handler(update_handler)
 
@@ -83,14 +80,14 @@ def main():
     link_handler = MessageHandler(Filters.text, link)
     dispatcher.add_handler(link_handler)
 
-  #  dispatcher.add_error_handler(error)
+  
 
     ##----------------Webhook-----------------------------
 
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
-                          url_path='574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
-    updater.bot.setWebhook("https://radiobot3.herokuapp.com/" + '574990729:AAHvFVDSNg-LQ5RUSaPdbiQ2pOdDA7XI5Xc')
+                          url_path=TOKEN)
+    updater.bot.setWebhook("https://radiobot3.herokuapp.com/" + TOKEN)
     updater.idle()
 
     ##---------------------Webhook_end---------------------
