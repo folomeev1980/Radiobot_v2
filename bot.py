@@ -55,7 +55,8 @@ def update(update, context):
     
 def cicle(update, context):
     while True:
-      time.sleep(1000)
+      print(update.message.text)
+      time.sleep(800)
 
 
 
