@@ -52,8 +52,8 @@ def update(update, context):
     
 def cicle(update, context):
     while True:
-      print(update.message.text)
-      time.sleep(800)
+        print("response", os.system('ping -c 1 ' + "https://radiobot3.herokuapp.com/"))
+        time.sleep(20 * 60)
 
 
 
@@ -96,9 +96,9 @@ def main():
     updater.bot.setWebhook("https://radiobot3.herokuapp.com/" + TOKEN)
     updater.idle()
 
-    while True:
-        print( "response",os.system('ping -c 1 ' + "https://radiobot3.herokuapp.com/"))
-        time.sleep(20*60)
+    # while True:
+    #     print( "response",os.system('ping -c 1 ' + "https://radiobot3.herokuapp.com/"))
+    #     time.sleep(20*60)
 
         ##---------------------Webhook_end---------------------
 
