@@ -1,15 +1,10 @@
 import os
 import re
-import base64
 import time
 import converter
 from pytube3.__main__ import YouTube
 
-data = str(base64.b64decode(b'NTc0OTkwNzI5OkFBSHZGVkRTTmctTFE1UlVTYVBkYmlRMnBPZERBN1hJNVhj'))
-TOKEN = data[2:len(data) - 1]
-print(TOKEN)
-data1 = str(base64.b64decode(b'QG1hbHRzZXY1MTExNw=='))
-ln = data1[2:len(data1) - 1]
+
 
 help = "Привет Это RadioBot, для скачивания mp3 c youtube:\n\n\
 Пожалуйста, введите ссылку на видео, вида:  https:.......... ?"
