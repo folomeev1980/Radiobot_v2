@@ -15,35 +15,6 @@ help = "Привет Это RadioBot, для скачивания mp3 c youtube:
 Пожалуйста, введите ссылку на видео, вида:  https:.......... ?"
 
 
-def convert(filename):
-    '''
-    Функция конвертации файла в mp3
-    :param filename: имя файла подаваемого для конвертации
-    :return: Возвращает сконвертированный файл
-    '''
-    # try:
-    #  os.remove('output.mp3')
-    # except FileNotFoundError:
-    #        pass
-
-    api = converter.Api('yW5eTpoFJKgINxd7wpdeBdlsl1T5OyWlQ9xMrGyVkRJbxRwHWKpJYNQuz36P7KPY')
-
-    process = api.convert({
-        "inputformat": "webm",
-        "outputformat": "mp3",
-        "input": "upload",
-        "converteroptions": {
-            "audio_bitrate": 32,
-            "audio_frequency": "44100",
-            "audio_codec": "MP3",
-            "audio_qscale": -1,
-
-        },
-        "file": open(filename, 'rb')
-    })
-    process.wait()
-
-    process.download('output.mp3')
 
 
 def convert_low32(filename):
@@ -61,7 +32,7 @@ def convert_low32(filename):
         "outputformat": "mp3",
         "input": "upload",
         "converteroptions": {
-            "audio_bitrate": 32,
+            "audio_bitrate": 48,
             "audio_frequency": "44100",
             "audio_codec": "MP3",
             "audio_qscale": -1,
