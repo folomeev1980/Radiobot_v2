@@ -1,12 +1,9 @@
 import os
 import config
 import logging
-#from converter.__main__ import YouTube
+import  time
 from pytube3.__main__ import YouTube as YouTube3
 import re
-#import telegram
-#from flask import Flask
-# from converter import YouTube
 import time
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 
@@ -99,7 +96,11 @@ def main():
     updater.bot.setWebhook("https://radiobot3.herokuapp.com/" + TOKEN)
     updater.idle()
 
-    ##---------------------Webhook_end---------------------
+    while True:
+        print( "response",os.system('ping -c 1 ' + "https://radiobot3.herokuapp.com/"))
+        time.sleep(20*60)
+
+        ##---------------------Webhook_end---------------------
 
 
 if __name__ == '__main__':
