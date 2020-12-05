@@ -7,8 +7,8 @@ import logging
 import re
 from collections import OrderedDict
 
-from pytube import request
-from pytube.__main__ import YouTube
+from converter import request
+from converter.__main__ import YouTube
 
 logger = logging.getLogger(__name__)
 

@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Various helper functions implemented by pytube."""
+"""Various helper functions implemented by converter."""
 from __future__ import absolute_import
 
 import logging
 import pprint
 import re
 
-from pytube.compat import unicode
-from pytube.exceptions import RegexMatchError
+from converter.compat import unicode
+from converter.exceptions import RegexMatchError
 
 
 logger = logging.getLogger(__name__)

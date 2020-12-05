@@ -5,7 +5,7 @@ from typing import Union, Pattern
 
 
 class PytubeError(Exception):
-    """Base pytube exception that all others inherent.
+    """Base converter exception that all others inherent.
 
     This is done to not pollute the built-in exceptions, which *could* result
     in unintended errors being unexpectedly and incorrectly handled within

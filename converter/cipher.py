@@ -20,8 +20,8 @@ import pprint
 import re
 from itertools import chain
 
-from pytube.exceptions import RegexMatchError
-from pytube.helpers import regex_search
+from converter.exceptions import RegexMatchError
+from converter.helpers import regex_search
 
 
 logger = logging.getLogger(__name__)

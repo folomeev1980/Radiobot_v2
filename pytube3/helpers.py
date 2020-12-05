@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Various helper functions implemented by pytube."""
+"""Various helper functions implemented by converter."""
 import functools
 import gzip
 import json
@@ -102,7 +102,7 @@ def setup_logger(level: int = logging.ERROR):
     handler.setFormatter(formatter)
 
     # https://github.com/nficano/pytube/issues/163
-    logger = logging.getLogger("pytube")
+    logger = logging.getLogger("converter")
     logger.addHandler(handler)
     logger.setLevel(level)
 
@@ -187,10 +187,10 @@ def create_mock_html_json(vid_id) -> Dict[str, Any]:
     :return dict data
         Dict used to generate the json.gz file
     """
-    from pytube import YouTube
+    from converter import YouTube
     gzip_filename = 'yt-video-%s-html.json.gz' % vid_id
 
-    # Get the pytube directory in order to navigate to /tests/mocks
+    # Get the converter directory in order to navigate to /tests/mocks
     pytube_dir_path = os.path.abspath(
         os.path.join(
             os.path.dirname(__file__),

@@ -3,11 +3,11 @@
 import json
 from collections import OrderedDict
 
-from pytube.compat import HTMLParser
-from pytube.compat import quote
-from pytube.compat import urlencode
-from pytube.exceptions import RegexMatchError
-from pytube.helpers import regex_search
+from converter.compat import HTMLParser
+from converter.compat import quote
+from converter.compat import urlencode
+from converter.exceptions import RegexMatchError
+from converter.helpers import regex_search
 
 
 class PytubeHTMLParser(HTMLParser):

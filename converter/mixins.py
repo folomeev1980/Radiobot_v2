@@ -6,10 +6,10 @@ import json
 import logging
 import pprint
 
-from pytube import cipher
-from pytube.compat import parse_qsl
-from pytube.compat import unquote
-from pytube.exceptions import LiveStreamError
+from converter import cipher
+from converter.compat import parse_qsl
+from converter.compat import unquote
+from converter.exceptions import LiveStreamError
 
 
 logger = logging.getLogger(__name__)

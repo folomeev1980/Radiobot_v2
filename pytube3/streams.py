@@ -4,7 +4,7 @@
 This module contains a container for stream manifest data.
 
 A container object for the media stream (video only / audio only / video+audio
-combined). This was referred to as ``Video`` in the legacy pytube version, but
+combined). This was referred to as ``Video`` in the legacy converter version, but
 has been renamed to accommodate DASH (which serves the audio and video
 separately).
 """

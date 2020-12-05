@@ -4,8 +4,8 @@ import math
 import time
 import xml.etree.ElementTree as ElementTree
 
-from pytube import request
-from pytube.compat import unescape
+from converter import request
+from converter.compat import unescape
 
 
 class Caption:
@@ -29,7 +29,7 @@ class Caption:
     def generate_srt_captions(self):
         """Generate "SubRip Subtitle" captions.
 
-        Takes the xml captions from :meth:`~pytube.Caption.xml_captions` and
+        Takes the xml captions from :meth:`~converter.Caption.xml_captions` and
         recompiles them into the "SubRip Subtitle" format.
         """
         return self.xml_caption_to_srt(self.xml_captions)

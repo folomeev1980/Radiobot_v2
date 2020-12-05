@@ -2,7 +2,7 @@ import os
 import re
 import base64
 import time
-import pytube
+import converter
 from pytube3.__main__ import YouTube
 
 data = str(base64.b64decode(b'NTc0OTkwNzI5OkFBSHZGVkRTTmctTFE1UlVTYVBkYmlRMnBPZERBN1hJNVhj'))
@@ -26,7 +26,7 @@ def convert(filename):
     # except FileNotFoundError:
     #        pass
 
-    api = pytube.Api('yW5eTpoFJKgINxd7wpdeBdlsl1T5OyWlQ9xMrGyVkRJbxRwHWKpJYNQuz36P7KPY')
+    api = converter.Api('yW5eTpoFJKgINxd7wpdeBdlsl1T5OyWlQ9xMrGyVkRJbxRwHWKpJYNQuz36P7KPY')
 
     process = api.convert({
         "inputformat": "webm",
@@ -55,7 +55,7 @@ def convert_low32(filename):
         pass
 
     time.sleep(15)
-    api = pytube.Api('yW5eTpoFJKgINxd7wpdeBdlsl1T5OyWlQ9xMrGyVkRJbxRwHWKpJYNQuz36P7KPY')
+    api = converter.Api('yW5eTpoFJKgINxd7wpdeBdlsl1T5OyWlQ9xMrGyVkRJbxRwHWKpJYNQuz36P7KPY')
     process = api.convert({
         "inputformat": "webm",
         "outputformat": "mp3",

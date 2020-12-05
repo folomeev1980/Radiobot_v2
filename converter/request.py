@@ -2,7 +2,7 @@
 """Implements a simple wrapper around urlopen."""
 import urllib.request
 
-from pytube.compat import urlopen
+from converter.compat import urlopen
 
 # 403 forbidden fix
 

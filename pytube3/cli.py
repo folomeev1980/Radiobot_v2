@@ -13,10 +13,10 @@ import sys
 import subprocess  # nosec
 from typing import List, Optional
 
-from pytube import __version__, CaptionQuery, Stream, Playlist
-from pytube import YouTube
-from pytube.exceptions import PytubeError
-from pytube.helpers import safe_filename, setup_logger
+from converter import __version__, CaptionQuery, Stream, Playlist
+from converter import YouTube
+from converter.exceptions import PytubeError
+from converter.helpers import safe_filename, setup_logger
 
 
 def main():
@@ -88,7 +88,7 @@ def _parse_args(
         "--list",
         action="store_true",
         help=(
-            "The list option causes pytube cli to return a list of streams "
+            "The list option causes converter cli to return a list of streams "
             "available to download"
         ),
     )

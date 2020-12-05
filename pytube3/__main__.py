@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-This module implements the core developer interface for pytube.
+This module implements the core developer interface for converter.
 
 The problem domain of the :class:`YouTube <YouTube> class focuses almost
 exclusively on the developer interface. Pytube offloads the heavy lifting to
@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 
 
 class YouTube:
-    """Core developer interface for pytube."""
+    """Core developer interface for converter."""
 
     def __init__(
         self,

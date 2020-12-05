@@ -11,8 +11,8 @@ import logging
 import os
 import sys
 
-from pytube import __version__
-from pytube import YouTube
+from converter import __version__
+from converter import YouTube
 
 
 logger = logging.getLogger(__name__)
@@ -33,7 +33,7 @@ def main():
         "--list",
         action="store_true",
         help=(
-            "The list option causes pytube cli to return a list of streams "
+            "The list option causes converter cli to return a list of streams "
             "available to download"
         ),
     )
